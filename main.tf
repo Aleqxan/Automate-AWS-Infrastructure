@@ -108,10 +108,9 @@ resource "aws_instance" "foxapp-server" {
     associate_public_ip_address = true
     key_name = aws_key_pair.ssh-key.key_name
 
-  tags ={
+    user_data = file("entry-script.sh")
+ 
+    tags ={
         Name: "${var.env_prefix}-dev-server"
     }
 }
-
-
-
